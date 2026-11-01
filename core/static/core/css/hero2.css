@@ -240,3 +240,8 @@
 
 .hx-slide, .hx-slide.s1 { animation: none; opacity: 0; transition: opacity 1.6s ease; }
 .hx-slide.on { opacity: 1; }
+
+.ft-credit a { color: var(--gold-light); font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(232, 184, 84, .35); transition: color .25s, border-color .25s; }
+.ft-credit a:hover { color: #fff; border-color: var(--gold); }
+.footer-bottom { align-items: center; }
+@media (max-width: 767px) { .footer-bottom { flex-direction: column; text-align: center; } }

@@ -1,0 +1,175 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+{% include "core/_hero.html" %}
+
+<!-- 01 ABOUT -->
+<section class="section">
+  <div class="container">
+    <div class="row align-items-center gy-5 gx-lg-5">
+      <div class="col-lg-6 reveal">
+        <div class="stack">
+          <div class="main"><img src="{% static 'core/img/photos/about-warehouse.jpg' %}" alt="Well-organised warehouse aisle" loading="lazy" width="1000" height="1300"></div>
+          <div class="sub"><img src="{% static 'core/img/photos/about-ship.jpg' %}" alt="Container ship at sea from above" loading="lazy" width="1000" height="1300"></div>
+          <div class="badge-card glass"><strong>Farm to Port</strong><span>Agro &amp; general trade</span></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <span class="sec-no reveal">About Us</span>
+        <h2 class="reveal d1 mt-2">Trade across borders, <span class="gold-text">made simple</span></h2>
+        {% for para in site.about_paragraphs %}<p class="reveal d2">{{ para }}</p>{% endfor %}
+        <div class="stats reveal d3" style="margin-top:2rem">
+          <div><strong data-count="9">0</strong><span>Product lines</span></div>
+          <div><strong data-count="6">0</strong><span>Core services</span></div>
+          <div><strong data-count="6">0</strong><span>Regions served</span></div>
+          <div><strong data-count="1">0</strong><span>Dedicated contact</span></div>
+        </div>
+        <a href="{% url 'about' %}" class="link-arrow reveal d3 mt-4">Read our story <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PRODUCT SHOWCASE -->
+<section class="section section-alt overflow-hidden" id="products-showcase">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
+      <div class="section-head reveal mb-0">
+        <span class="sec-no">Products</span>
+        <h2 class="mt-2">Export-grade <span class="gold-text">agro products</span></h2>
+        <p class="sub">Drag or scroll sideways. Open any product for specifications, packing and season.</p>
+      </div>
+      <div class="rail-nav reveal"><button type="button" id="railPrev" aria-label="Previous"><i class="bi bi-arrow-left"></i></button><button type="button" id="railNext" aria-label="Next"><i class="bi bi-arrow-right"></i></button></div>
+    </div>
+  </div>
+  <div class="rail" id="rail">
+    <div class="rail-track">
+      {% for p in products %}<div class="rail-item">{% include "core/_product_card.html" %}</div>{% endfor %}
+    </div>
+  </div>
+  <div class="container text-center mt-5"><a href="{% url 'products' %}" class="link-arrow">View the full catalogue <i class="bi bi-arrow-right"></i></a></div>
+</section>
+
+<!-- 03 TRADE -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">What We Trade</span>
+      <h2 class="mt-2">Import, export and <span class="gold-text">specialised sourcing</span></h2>
+    </div>
+    {% include "core/_trade_cards.html" %}
+    <div class="text-center mt-5"><a href="{% url 'trade' %}" class="link-arrow">See everything we trade <i class="bi bi-arrow-right"></i></a></div>
+  </div>
+</section>
+
+<!-- 04 FARM TO PORT JOURNEY -->
+<section class="section section-alt journey" id="journey">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Farm to Port</span>
+      <h2 class="mt-2">The journey of <span class="gold-text">every shipment</span></h2>
+    </div>
+    <div class="row gx-lg-5">
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="journey-media">
+          <img class="active" data-step="0" src="{% static 'core/img/photos/farm-story.jpg' %}" alt="Farm" loading="lazy">
+          <img data-step="1" src="{% static 'core/img/photos/agro-jars.jpg' %}" alt="Graded spices" loading="lazy">
+          <img data-step="2" src="{% static 'core/img/photos/agro-warehouse.jpg' %}" alt="Packed goods in warehouse" loading="lazy">
+          <img data-step="3" src="{% static 'core/img/photos/sea-freight.jpg' %}" alt="Container ship" loading="lazy">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="jstep" data-step="0"><span class="jno">01</span><h3>Source at origin</h3><p>We work with verified growers, mills and processors, matched to your specification and the season.</p></div>
+        <div class="jstep" data-step="1"><span class="jno">02</span><h3>Grade &amp; test</h3><p>Cleaning, grading and sampling, with laboratory tests where your market requires them.</p></div>
+        <div class="jstep" data-step="2"><span class="jno">03</span><h3>Pack &amp; inspect</h3><p>Food-grade packing, marking and pre-shipment inspection, supervised at loading.</p></div>
+        <div class="jstep" data-step="3"><span class="jno">04</span><h3>Document &amp; ship</h3><p>Certificates, customs and freight coordinated end to end, tracked to your port.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 SERVICES -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Our Services</span>
+      <h2 class="mt-2">End-to-end trade support, <span class="gold-text">under one roof</span></h2>
+      <p class="sub">From finding the right supplier to supporting you after delivery.</p>
+    </div>
+    {% include "core/_services_grid.html" %}
+    <div class="text-center mt-5"><a href="{% url 'services' %}" class="link-arrow">Explore all services <i class="bi bi-arrow-right"></i></a></div>
+  </div>
+</section>
+
+<!-- 06 GLOBAL REACH -->
+<section class="section reach" id="reach">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5 reveal">
+        <span class="sec-no">Global Reach</span>
+        <h2 class="mt-2">Products in demand, <span class="gold-text">everywhere</span></h2>
+        <p>From the Middle East and Africa to Europe and the Americas, we plan the route, the terms and the paperwork for each market.</p>
+        <a href="{% url 'markets' %}" class="btn btn-gold">See our markets <i class="bi bi-arrow-right ms-1"></i></a>
+      </div>
+      <div class="col-lg-7">
+        <div class="reach-grid">
+          <div class="reach-pin reveal"><i class="bi bi-sun"></i><strong>Middle East &amp; GCC</strong></div>
+          <div class="reach-pin reveal d1"><i class="bi bi-globe-europe-africa"></i><strong>Africa</strong></div>
+          <div class="reach-pin reveal d2"><i class="bi bi-geo-alt"></i><strong>South-East Asia</strong></div>
+          <div class="reach-pin reveal d1"><i class="bi bi-building"></i><strong>Europe</strong></div>
+          <div class="reach-pin reveal d2"><i class="bi bi-globe-americas"></i><strong>North America</strong></div>
+          <div class="reach-pin reveal d3"><i class="bi bi-compass"></i><strong>South Asia</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 PROCESS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">How We Work</span>
+      <h2 class="mt-2">From enquiry to <span class="gold-text">delivery</span></h2>
+    </div>
+    {% include "core/_process.html" %}
+  </div>
+</section>
+
+<!-- 08 WHY -->
+<section class="section">
+  <div class="container">
+    {% include "core/_why_panel.html" %}
+    <div class="text-center mt-5"><a href="{% url 'quality' %}" class="link-arrow">Our quality &amp; compliance promise <i class="bi bi-arrow-right"></i></a></div>
+  </div>
+</section>
+
+<!-- 09 INSIGHTS -->
+<section class="section section-alt" id="insights-preview">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Insights</span>
+      <h2 class="mt-2">Trade guides, <span class="gold-text">in plain language</span></h2>
+    </div>
+    <div class="row g-4">
+      {% for a in insights|slice:":3" %}
+      <div class="col-md-4 reveal d{{ forloop.counter0 }}"><a class="article-card tilt vert" href="{% url 'insight_detail' a.slug %}"><div class="ac-img"><img src="{{ a.image_url }}" alt="" loading="lazy"></div><div class="ac-body"><span class="pc-cat static">{{ a.tag }}</span><h3>{{ a.title }}</h3><span class="pc-more">{{ a.read_minutes }} min read <i class="bi bi-arrow-right"></i></span></div></a></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- 10 FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Before We Begin</span>
+      <h2 class="mt-2">Common <span class="gold-text">questions</span></h2>
+    </div>
+    {% include "core/_faq.html" with uid="home" %}
+  </div>
+</section>
+
+{% include "core/_quick_enquiry.html" %}
+{% endblock %}

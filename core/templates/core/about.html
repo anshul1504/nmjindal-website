@@ -1,0 +1,68 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}About Us | NM Jindal Global{% endblock %}
+{% block description %}NM Jindal Global makes international and domestic trade simple, transparent and profitable. Our vision, mission and strengths.{% endblock %}
+
+{% block content %}
+{% include "core/_page_hero.html" with bg="bg-warehouse" crumb="About" title="Connecting markets," accent="delivering trust" sub="An import-export organisation built on quality, integrity and long-term relationships." %}
+
+<section class="section">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6 reveal">
+        <div class="stack">
+          <div class="main"><img src="{% static 'core/img/photos/about-warehouse.jpg' %}" alt="Well-organised warehouse aisle" width="1000" height="1300"></div>
+          <div class="sub"><img src="{% static 'core/img/photos/about-ship.jpg' %}" alt="Container ship at sea from above" width="1000" height="1300"></div>
+          <div class="badge-card glass"><strong>Import &amp; Export</strong><span>International &amp; domestic trade</span></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <span class="sec-no reveal">About Us</span>
+        <h2 class="reveal d1 mt-2">Trade across borders, <span class="gold-text">made simple</span></h2>
+        {% for para in site.about_paragraphs %}<p class="reveal d2">{{ para }}</p>{% endfor %}
+        <div class="vision-card reveal d3">
+          <i class="bi bi-eye"></i>
+          <div>
+            <h3>Our Vision</h3>
+            <p class="mb-0">{{ site.vision_text }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stats reveal">
+      <div><strong data-count="2">0</strong><span>Trade directions: import &amp; export</span></div>
+      <div><strong data-count="6">0</strong><span>Core trade services</span></div>
+      <div><strong data-count="3">0</strong><span>Freight modes: sea, air, land</span></div>
+      <div><strong data-count="1">0</strong><span>Dedicated contact per client</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Our Mission</span>
+      <h2 class="mt-2">What we <span class="gold-text">stand for</span></h2>
+    </div>
+    <div class="row g-4 justify-content-center">
+      {% for item in mission %}
+      <div class="col-md-6 col-lg-4 reveal d{{ forloop.counter0 }}">
+        <div class="mission-card h-100"><span class="num">0{{ forloop.counter }}</span><p class="mb-0">{{ item }}</p></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Our Strengths</span>
+      <h2 class="mt-2">Built on <span class="gold-text">reliability</span></h2>
+    </div>
+    {% include "core/_strengths.html" %}
+  </div>
+</section>
+
+{% include "core/_cta.html" %}
+{% endblock %}

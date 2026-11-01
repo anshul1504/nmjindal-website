@@ -1,0 +1,4 @@
+Django>=5.2,<5.3
+Pillow>=11
+django-jazzmin>=3.0
+whitenoise>=6.6

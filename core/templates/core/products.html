@@ -1,0 +1,70 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Agro Products for Export | NM Jindal Global{% endblock %}
+{% block description %}Rice, wheat, pulses, spices, oilseeds, tea, fresh fruit and vegetables, cashew and dry fruits. Export-grade agricultural products from NM Jindal Global.{% endblock %}
+
+{% block content %}
+{% include "core/_page_hero.html" with bg="bg-farm" crumb="Products" title="Agro products," accent="export-ready" sub="From farm to port: graded, inspected and documented for buyers around the world." %}
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Product Catalogue</span>
+      <h2 class="mt-2">Nine product lines, <span class="gold-text">one trusted source</span></h2>
+      <p class="sub">Filter by category, open a product for specifications, packing options and sourcing season.</p>
+    </div>
+    <div class="filter-bar reveal" role="tablist" aria-label="Product categories">
+      <button class="chip active" data-filter="all" type="button">All</button>
+      {% for c in categories %}<button class="chip" data-filter="{{ c }}" type="button">{{ c }}</button>{% endfor %}
+    </div>
+    <div class="row g-4" id="productGrid">
+      {% for p in products %}
+      <div class="col-md-6 col-lg-4 reveal" data-cat="{{ p.category }}">
+        {% include "core/_product_card.html" %}
+      </div>
+      {% endfor %}
+    </div>
+    <p class="note-line reveal mt-4"><i class="bi bi-info-circle"></i> Don't see your product? We also source specialised agricultural and non-agricultural goods to your brief. <a href="{% url 'contact' %}">Tell us what you need</a>.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Sourcing Calendar</span>
+      <h2 class="mt-2">When each product is <span class="gold-text">at its best</span></h2>
+      <p class="sub">Indicative sourcing windows. Fresh lines in particular depend on the season, so we confirm timing before booking.</p>
+    </div>
+    <div class="cal reveal">
+      <div class="cal-row cal-head"><span></span>{% for m in months_all %}<span>{{ m }}</span>{% endfor %}</div>
+      {% for p in cal_rows %}
+      <div class="cal-row"><span class="cal-name">{{ p.name }}</span>{% for c in p.cal %}<span class="cal-cell{% if c.on %} on{% endif %}"></span>{% endfor %}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Pack &amp; Ship</span>
+      <h2 class="mt-2">Packed for your <span class="gold-text">market</span></h2>
+    </div>
+    <div class="row align-items-center gy-4">
+      <div class="col-lg-6 reveal"><div class="img-frame"><img src="{% static 'core/img/photos/agro-warehouse.jpg' %}" alt="Warehouse with palletised, wrapped goods" loading="lazy" width="1200" height="900"></div></div>
+      <div class="col-lg-6 reveal d1">
+        <p>Bag size, material, marking and container loading are agreed before production, so the cargo clears at your port without rework.</p>
+        <ul class="tick-list">
+          <li>PP, jute, paper or vacuum packing, 5-50 kg and bulk</li>
+          <li>Palletised and shrink-wrapped container loading</li>
+          <li>Private label and retail packs on request</li>
+          <li>Fumigation and phytosanitary support where required</li>
+        </ul>
+        <a href="{% url 'contact' %}" class="btn btn-gold mt-2">Request a quote <i class="bi bi-arrow-right ms-1"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include "core/_cta.html" %}
+{% endblock %}

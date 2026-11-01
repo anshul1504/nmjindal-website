@@ -1,0 +1,18 @@
+{% load static %}
+<div class="row g-4">
+  {% for s in services %}
+  <div class="col-md-6 col-lg-4 reveal d{{ forloop.counter0 }}">
+    <a class="service-card h-100 d-block text-decoration-none tilt" href="{% url 'service_detail' s.slug %}">
+      <div class="thumb">
+        <span class="svc-no">0{{ forloop.counter }}</span>
+        <img src="{{ s.image_url }}" alt="{{ s.name }}" loading="lazy" width="1200" height="800">
+      </div>
+      <div class="body">
+        <h3>{{ s.name }}</h3>
+        <p>{{ s.summary }}</p>
+        <span class="link-arrow sm">Learn more <i class="bi bi-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>

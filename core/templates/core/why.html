@@ -1,0 +1,54 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Why Choose Us | NM Jindal Global{% endblock %}
+{% block description %}Verified suppliers, quality-checked goods, honest dealings, competitive pricing and on-time delivery, with quality and compliance first.{% endblock %}
+
+{% block content %}
+{% include "core/_page_hero.html" with bg="bg-quality" crumb="Why Choose Us" title="A trade partner you can" accent="count on" sub="Experienced professionals, verified suppliers and honest, transparent dealings." %}
+
+<section class="section">
+  <div class="container">{% include "core/_why_panel.html" %}</div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Our Strengths</span>
+      <h2 class="mt-2">Built on <span class="gold-text">reliability</span></h2>
+    </div>
+    {% include "core/_strengths.html" %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6 order-lg-2 reveal">
+        <div class="img-frame"><img src="{% static 'core/img/photos/quality.jpg' %}" alt="Inspector checking goods with a clipboard" loading="lazy" width="1200" height="900"><div class="stamp glass"><i class="bi bi-patch-check"></i> Quality checked before dispatch</div></div>
+      </div>
+      <div class="col-lg-6 order-lg-1">
+        <span class="sec-no reveal">Quality &amp; Compliance First</span>
+        <h2 class="reveal d1 mt-2">Trust is the foundation of <span class="gold-text">every shipment</span></h2>
+        <p class="reveal d2">Each order goes through supplier verification, quality checks and proper documentation, in line with international trade regulations, so you receive exactly what you ordered.</p>
+        <div class="row g-3 reveal d3">
+          <div class="col-sm-4"><div class="q-step"><i class="bi bi-person-check"></i>Supplier verification</div></div>
+          <div class="col-sm-4"><div class="q-step"><i class="bi bi-clipboard2-check"></i>Quality checks</div></div>
+          <div class="col-sm-4"><div class="q-step"><i class="bi bi-file-earmark-text"></i>Proper documentation</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Before We Begin</span>
+      <h2 class="mt-2">Common <span class="gold-text">questions</span></h2>
+    </div>
+    {% include "core/_faq.html" with uid="why" %}
+  </div>
+</section>
+
+{% include "core/_cta.html" %}
+{% endblock %}

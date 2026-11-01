@@ -1,0 +1,64 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}{{ service.name }} | NM Jindal Global{% endblock %}
+{% block description %}{{ service.summary }}{% endblock %}
+
+{% block content %}
+{% include "core/_page_hero.html" with bg_url=service.bg_url crumb=service.name title=service.name accent="" sub=service.lead %}
+
+<section class="section">
+  <div class="container">
+    <div class="row gy-5 gx-lg-5">
+      <div class="col-lg-7">
+        <span class="sec-no reveal">The Service</span>
+        <h2 class="reveal d1 mt-2">How we <span class="gold-text">help</span></h2>
+        {% for para in service.body %}<p class="reveal d2">{{ para }}</p>{% endfor %}
+        <h3 class="h5 mt-5 reveal">What is included</h3>
+        <ul class="tick-list reveal">{% for x in service.includes %}<li>{{ x }}</li>{% endfor %}</ul>
+      </div>
+      <div class="col-lg-5">
+        <div class="img-frame reveal d1"><img src="{{ service.image_url }}" alt="{{ service.name }}" loading="lazy" width="1200" height="800"><div class="stamp glass"><i class="bi {{ service.icon }}"></i> {{ service.name }}</div></div>
+        <a href="{% url 'contact' %}?service={{ service.slug }}" class="btn btn-gold w-100 mt-3">Talk to us about this <i class="bi bi-arrow-right ms-1"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">What You Get</span>
+      <h2 class="mt-2">Outcomes that <span class="gold-text">matter</span></h2>
+    </div>
+    <div class="row g-4">
+      {% for t, d in service.outcomes %}
+      <div class="col-md-4 reveal d{{ forloop.counter0 }}"><div class="mission-card h-100"><span class="num">0{{ forloop.counter }}</span><h3 class="h5">{{ t }}</h3><p class="mb-0">{{ d }}</p></div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">How We Work</span>
+      <h2 class="mt-2">From enquiry to <span class="gold-text">delivery</span></h2>
+    </div>
+    {% include "core/_process.html" %}
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">More Services</span>
+      <h2 class="mt-2">Explore the <span class="gold-text">rest</span></h2>
+    </div>
+    <div class="row g-3">
+      {% for s in others %}<div class="col-6 col-lg-4 reveal"><a class="mini-link tilt" href="{% url 'service_detail' s.slug %}"><i class="bi {{ s.icon }}"></i><span>{{ s.name }}</span><i class="bi bi-arrow-right ms-auto"></i></a></div>{% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "core/_cta.html" %}
+{% endblock %}

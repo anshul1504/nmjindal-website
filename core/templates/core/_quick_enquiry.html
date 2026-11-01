@@ -1,0 +1,40 @@
+{% load static %}
+<section class="section qe" id="quote">
+  <div class="container">
+    <div class="qe-card">
+      <div class="row g-0">
+        <div class="col-lg-5">
+          <div class="qe-left">
+            <span class="sec-no">Get a quote</span>
+            <h2 class="mt-2">Tell us what you want to <span class="gold-text">buy or sell</span></h2>
+            <p>Share the product, quantity, destination and timeline. A dedicated contact will respond with the next steps.</p>
+            <ul class="tick-list">
+              <li>Reply from a dedicated point of contact</li>
+              <li>Specification and samples before you commit</li>
+              <li>Documentation and freight planned for you</li>
+            </ul>
+            {% if contact.phone %}<p class="mb-1"><i class="bi bi-telephone me-2 text-gold"></i><a href="{{ contact.tel_url }}">{{ contact.phone }}</a></p>{% endif %}
+            {% if contact.email %}<p class="mb-1"><i class="bi bi-envelope me-2 text-gold"></i><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>{% endif %}
+            {% if contact.email2 %}<p class="mb-0"><i class="bi bi-envelope-at me-2 text-gold"></i><a href="mailto:{{ contact.email2 }}">{{ contact.email2 }}</a></p>{% endif %}
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <form method="post" action="{% url 'contact' %}" class="qe-form enquiry-form" novalidate>
+            {% csrf_token %}
+            <div class="hp" aria-hidden="true"><input type="text" name="website_url" tabindex="-1" autocomplete="off"></div>
+            <div class="row g-3">
+              <div class="col-md-6"><label class="form-label" for="qe-name">Name *</label><input id="qe-name" name="name" class="form-control" required placeholder="Your name"></div>
+              <div class="col-md-6"><label class="form-label" for="qe-email">Email *</label><input id="qe-email" type="email" name="email" class="form-control" required placeholder="you@company.com"></div>
+              <div class="col-md-6"><label class="form-label" for="qe-phone">Phone / WhatsApp</label><input id="qe-phone" name="phone" class="form-control" placeholder="+00 000 000 0000"></div>
+              <div class="col-md-6"><label class="form-label" for="qe-interest">I am interested in</label>
+                <select id="qe-interest" name="interest" class="form-select"><option value="import">Importing</option><option value="export" selected>Exporting</option><option value="sourcing">Specialised sourcing</option><option value="logistics">Logistics support</option><option value="other">Something else</option></select></div>
+              <div class="col-12"><label class="form-label" for="qe-message">Your requirement *</label><textarea id="qe-message" name="message" rows="4" class="form-control" required placeholder="Product, quantity, destination port / country, timeline"></textarea></div>
+              <div class="col-12"><button type="submit" class="btn btn-gold btn-lg w-100">Send Enquiry <i class="bi bi-send ms-1"></i></button></div>
+            </div>
+            <p class="spec-note mb-0 mt-3">We use your details only to respond to your enquiry. See our <a href="{% url 'privacy' %}">privacy policy</a>.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+Thank you, {{ enquiry.name }}.
+
+We have received your enquiry ({{ ref }}) and a dedicated member of our team will get back to you shortly, usually within one business day.
+
+Your message
+------------
+Interest: {{ enquiry.get_interest_display }}{% if enquiry.company %}
+Company: {{ enquiry.company }}{% endif %}
+
+{{ enquiry.message }}
+
+What happens next
+1. We review your requirement (product, quantity, destination, timeline).
+2. We respond with specifications, packing options and indicative terms.
+3. We plan the shipment with you: sourcing, inspection, documentation and freight.
+
+Need to add something? Reply to this email{% if site.phone %} or call {{ site.phone }}{% endif %}.
+
+{{ site.company_name }}
+{{ site.tagline }}
+{{ base }}

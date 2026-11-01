@@ -1,0 +1,80 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}{{ product.name }} Export | NM Jindal Global{% endblock %}
+{% block description %}{{ product.summary }}{% endblock %}
+
+{% block content %}
+{% include "core/_page_hero.html" with bg_url=product.bg_url crumb=product.name title="Export-grade" accent=product.name sub=product.summary %}
+
+<section class="section">
+  <div class="container">
+    <div class="row gy-5 gx-lg-5">
+      <div class="col-lg-7">
+        <span class="sec-no reveal">Overview</span>
+        <h2 class="reveal d1 mt-2">{{ product.name }}, <span class="gold-text">sourced with care</span></h2>
+        {% for para in product.about %}<p class="reveal d2">{{ para }}</p>{% endfor %}
+
+        <h3 class="h5 mt-5 reveal">Varieties &amp; grades</h3>
+        <ul class="chip-list big reveal">{% for v in product.varieties %}<li>{{ v }}</li>{% endfor %}</ul>
+
+        <h3 class="h5 mt-5 reveal">Typical uses</h3>
+        <ul class="chip-list big reveal">{% for u in product.uses %}<li>{{ u }}</li>{% endfor %}</ul>
+      </div>
+      <div class="col-lg-5">
+        <div class="spec-card reveal d1">
+          <img src="{{ product.image_url }}" alt="{{ product.name }}" width="1200" height="900">
+          <div class="spec-body">
+            <h3>Specification</h3>
+            <dl class="spec-list">{% for k, v in product.specs %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}</dl>
+            <p class="spec-note">Indicative. Final specification is agreed and confirmed per order.</p>
+            <a href="{% url 'contact' %}?product={{ product.slug }}" class="btn btn-gold w-100">Request a quote <i class="bi bi-arrow-right ms-1"></i></a>
+            {% if contact.whatsapp_url %}<a href="{{ contact.whatsapp_url }}" target="_blank" rel="noopener" class="btn btn-ghost w-100 mt-2"><i class="bi bi-whatsapp me-1"></i> WhatsApp us</a>{% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="row gy-5">
+      <div class="col-lg-6 reveal">
+        <span class="sec-no">Packing &amp; Shipping</span>
+        <h2 class="mt-2">How it <span class="gold-text">travels</span></h2>
+        <ul class="tick-list">{% for x in product.packing %}<li>{{ x }}</li>{% endfor %}</ul>
+      </div>
+      <div class="col-lg-6 reveal d1">
+        <span class="sec-no">Sourcing Season</span>
+        <h2 class="mt-2">Best <span class="gold-text">windows</span></h2>
+        <div class="season">{% for c in season %}<span class="{% if c.on %}on{% endif %}">{{ c.m }}</span>{% endfor %}</div>
+        <p class="spec-note mt-3">Indicative. Fresh lines depend on the crop year, so we confirm timing before booking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">From Order to Port</span>
+      <h2 class="mt-2">How we <span class="gold-text">deliver</span> it</h2>
+    </div>
+    {% include "core/_process.html" %}
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Related</span>
+      <h2 class="mt-2">You may also <span class="gold-text">need</span></h2>
+    </div>
+    <div class="row g-4">
+      {% for p in related %}<div class="col-md-6 col-lg-4 reveal">{% include "core/_product_card.html" %}</div>{% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "core/_cta.html" %}
+{% endblock %}

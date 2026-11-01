@@ -1,0 +1,9 @@
+{% load static %}
+<section class="page-hero{% if bg or bg_url %} has-photo{% endif %}">
+  {% if bg_url %}<img class="ph-img" src="{{ bg_url }}" alt="" data-parallax="0.18" fetchpriority="high">{% elif bg %}{% with p='core/img/photos/'|add:bg|add:'.jpg' %}<img class="ph-img" src="{% static p %}" alt="" data-parallax="0.18" fetchpriority="high">{% endwith %}{% endif %}
+  <div class="container">
+    <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span>/</span>{{ crumb }}</nav>
+    <h1 class="reveal d1">{{ title }} <span class="gold-text">{{ accent }}</span></h1>
+    <p class="reveal d2">{{ sub }}</p>
+  </div>
+</section>

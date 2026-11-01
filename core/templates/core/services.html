@@ -1,0 +1,39 @@
+{% extends "core/base.html" %}
+{% block title %}Our Services | NM Jindal Global{% endblock %}
+{% block description %}Product sourcing, quality inspection, documentation, logistics coordination, customs compliance and after-sales support.{% endblock %}
+
+{% block content %}
+{% include "core/_page_hero.html" with bg="bg-sea" crumb="Services" title="End-to-end trade support," accent="under one roof" sub="From finding the right supplier to supporting you after delivery." %}
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">What We Do</span>
+      <h2 class="mt-2">Six services, <span class="gold-text">one partner</span></h2>
+    </div>
+    {% include "core/_services_grid.html" %}
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">How We Work</span>
+      <h2 class="mt-2">From enquiry to <span class="gold-text">delivery</span></h2>
+    </div>
+    {% include "core/_process.html" %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Freight</span>
+      <h2 class="mt-2">Sea, air and land, <span class="gold-text">coordinated</span></h2>
+    </div>
+    {% include "core/_freight.html" %}
+  </div>
+</section>
+
+{% include "core/_cta.html" %}
+{% endblock %}

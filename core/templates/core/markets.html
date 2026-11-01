@@ -1,0 +1,57 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Global Markets and Shipping Terms | NM Jindal Global{% endblock %}
+{% block description %}The regions we trade with, freight options by sea, air and land, and the shipping terms (FOB, CFR, CIF) we work with.{% endblock %}
+
+{% block content %}
+{% include "core/_page_hero.html" with bg="bg-containers" crumb="Global Markets" title="Trade routes" accent="across the world" sub="Regions we serve, how goods move, and the terms we ship on." %}
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Regions</span>
+      <h2 class="mt-2">Where our products <span class="gold-text">are in demand</span></h2>
+      <p class="sub">Regions we trade with and the lines that move most to each.</p>
+    </div>
+    <div class="row g-4">
+      {% for r in regions %}
+      <div class="col-md-6 col-lg-4 reveal d{{ forloop.counter0 }}">
+        <div class="region-card tilt h-100">
+          <i class="bi {{ r.icon }}"></i>
+          <h3>{{ r.name }}</h3>
+          <p>{{ r.note }}</p>
+          <ul class="chip-list">{% for x in r.products %}<li>{{ x }}</li>{% endfor %}</ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Freight</span>
+      <h2 class="mt-2">Sea, air and land, <span class="gold-text">coordinated</span></h2>
+    </div>
+    {% include "core/_freight.html" %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Shipping Terms</span>
+      <h2 class="mt-2">Terms we <span class="gold-text">work with</span></h2>
+      <p class="sub">Standard Incoterms keep costs and risk clear for both sides. Final terms are agreed per order.</p>
+    </div>
+    <div class="row g-4">
+      {% for code, name, text in incoterms %}
+      <div class="col-md-6 col-lg-3 reveal d{{ forloop.counter0 }}"><div class="term-card h-100"><span class="term-code">{{ code }}</span><h3 class="h6">{{ name }}</h3><p class="mb-0">{{ text }}</p></div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "core/_cta.html" %}
+{% endblock %}

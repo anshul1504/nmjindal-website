@@ -1,0 +1,47 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}What We Trade | NM Jindal Global{% endblock %}
+{% block description %}Import machinery, raw materials and electronics; export agricultural products, textiles, metals and spices; or let us source to your exact specification.{% endblock %}
+
+{% block content %}
+{% include "core/_page_hero.html" with bg="bg-containers" crumb="What We Trade" title="Import, export and" accent="specialised sourcing" sub="Quality products from trusted sources, moved to where your business needs them." %}
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Our Range</span>
+      <h2 class="mt-2">What we <span class="gold-text">trade</span></h2>
+    </div>
+    {% include "core/_trade_cards.html" %}
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Product Range</span>
+      <h2 class="mt-2">Categories we <span class="gold-text">work with</span></h2>
+      <p class="sub">Examples of what we import and export. Don't see yours? Our specialised sourcing covers custom requirements.</p>
+    </div>
+    <div class="row g-3 g-lg-4">
+      <div class="col-6 col-lg-3 reveal"><div class="tile"><img src="{% static 'core/img/photos/trade-import.jpg' %}" alt="Machinery" loading="lazy"><span>Machinery</span></div></div>
+      <div class="col-6 col-lg-3 reveal d1"><div class="tile"><img src="{% static 'core/img/photos/trade-electro.jpg' %}" alt="Electronics" loading="lazy"><span>Electronics</span></div></div>
+      <div class="col-6 col-lg-3 reveal d2"><div class="tile"><img src="{% static 'core/img/photos/trade-textile.jpg' %}" alt="Textiles" loading="lazy"><span>Textiles</span></div></div>
+      <div class="col-6 col-lg-3 reveal d3"><div class="tile"><img src="{% static 'core/img/photos/spices.jpg' %}" alt="Spices" loading="lazy"><span>Spices</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Logistics Coordination</span>
+      <h2 class="mt-2">Sea, air and land, <span class="gold-text">coordinated</span></h2>
+      <p class="sub">However your goods travel, we plan the route and manage the paperwork.</p>
+    </div>
+    {% include "core/_freight.html" %}
+  </div>
+</section>
+
+{% include "core/_cta.html" %}
+{% endblock %}

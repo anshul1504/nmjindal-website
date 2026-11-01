@@ -1,0 +1,10 @@
+{% extends "core/base.html" %}
+{% load richtext %}
+{% block title %}{{ page.title }} {{ page.accent }} | {{ site.company_name }}{% endblock %}
+
+{% block content %}
+{% include "core/_page_hero.html" with crumb=page.title title=page.title accent=page.accent sub=page.subtitle %}
+<section class="section">
+  <div class="container prose">{{ page.body|richtext }}</div>
+</section>
+{% endblock %}

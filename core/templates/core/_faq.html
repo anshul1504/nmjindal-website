@@ -1,0 +1,12 @@
+<div class="accordion faq mx-auto reveal" id="faq{{ uid }}" style="max-width: 52rem;">
+  {% for q, a in faqs %}
+  <div class="accordion-item">
+    <h3 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq{{ uid }}-{{ forloop.counter }}" aria-expanded="false" aria-controls="faq{{ uid }}-{{ forloop.counter }}">{{ q }}</button>
+    </h3>
+    <div id="faq{{ uid }}-{{ forloop.counter }}" class="accordion-collapse collapse" data-bs-parent="#faq{{ uid }}">
+      <div class="accordion-body">{{ a }}</div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

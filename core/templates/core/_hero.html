@@ -1,0 +1,52 @@
+{% load static %}
+<section class="hx" id="top">
+  <div class="hx-bg" aria-hidden="true">
+    {% for sl in hero_slides %}<img class="hx-slide{% if forloop.first %} on{% endif %}" src="{{ sl.image.url }}" alt=""{% if forloop.first %} fetchpriority="high"{% else %} decoding="async"{% endif %} width="1920" height="1080">
+    {% empty %}<img class="hx-slide on" src="{% static 'core/img/photos/hero-rice.jpg' %}" alt="" fetchpriority="high" width="1920" height="1080">{% endfor %}
+    <div class="hx-shade"></div>
+  </div>
+
+  <div class="container hx-inner">
+    <h1 aria-label="{{ site.hero_title_plain }} {{ site.hero_title_gold }}">{% for w in site.hero_title_plain.split %}<span class="w" aria-hidden="true" style="--i:{{ forloop.counter0 }}"><i>{{ w }}</i></span> {% endfor %}{% for w in site.hero_title_gold.split %}<span class="w" aria-hidden="true" style="--i:{{ forloop.counter0|add:5 }}"><i class="gold-text">{{ w }}</i></span> {% endfor %}</h1>
+
+    {% if site.roll_words %}<p class="h2-roll reveal d1" aria-label="{{ site.hero_roll_prefix }}">
+      <span>{{ site.hero_roll_prefix }}</span>
+      <span class="roll" aria-hidden="true"><span class="roll-in" style="--n:{{ site.roll_words|length }}">{% for w in site.roll_words %}<b>{{ w }}</b>{% endfor %}<b>{{ site.roll_words.0 }}</b></span></span>
+    </p>{% endif %}
+
+    <p class="hx-lead reveal d2">{{ site.hero_lead }}</p>
+
+    <div class="d-flex flex-wrap gap-3 reveal d3">
+      <a href="{% url 'contact' %}" class="btn btn-gold btn-lg">Request a Quote <i class="bi bi-arrow-up-right ms-1"></i></a>
+      <a href="{% url 'products' %}" class="btn btn-ghost btn-lg">Explore Products <i class="bi bi-arrow-right ms-1"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER (two rows, opposite directions) -->
+<div class="ticker" aria-hidden="true">
+  <div class="tick-row"><div class="tick-track">
+    {% for n in "12"|make_list %}<span>Basmati Rice</span><span>Wheat</span><span>Pulses &amp; Lentils</span><span>Spices</span><span>Sesame &amp; Oilseeds</span><span>Tea</span><span>Fresh Fruits</span><span>Vegetables</span><span>Cashew &amp; Dry Fruits</span>{% endfor %}
+  </div></div>
+  <div class="tick-row rev"><div class="tick-track">
+    {% for n in "12"|make_list %}<span>Sourcing</span><span>Quality Inspection</span><span>Documentation</span><span>Sea Freight</span><span>Air Freight</span><span>Land Freight</span><span>Customs Compliance</span><span>After-Sales Support</span>{% endfor %}
+  </div></div>
+</div>
+
+<!-- INTRO BAND -->
+<section class="section intro-band">
+  <div class="container">
+    <div class="row gy-4 align-items-end">
+      <div class="col-lg-6 reveal">
+        <span class="sec-no">The NM Jindal way</span>
+        <h2 class="mt-2">{{ site.intro_heading }} <span class="gold-text">{{ site.intro_heading_gold }}</span></h2>
+      </div>
+      <div class="col-lg-6 reveal d1"><p class="mb-0">{{ site.intro_text }}</p></div>
+    </div>
+    <div class="row g-4 mt-2">
+      <div class="col-md-4 reveal"><div class="feat tilt"><span class="feat-i"><i class="bi bi-person-badge"></i></span><h3>One accountable contact</h3><p>A dedicated person for every client, from first enquiry to after-sales support.</p></div></div>
+      <div class="col-md-4 reveal d1"><div class="feat tilt"><span class="feat-i"><i class="bi bi-cash-coin"></i></span><h3>Clear, honest pricing</h3><p>Competitive, transparent numbers agreed upfront. No surprises on the invoice.</p></div></div>
+      <div class="col-md-4 reveal d2"><div class="feat tilt"><span class="feat-i"><i class="bi bi-headset"></i></span><h3>Support after delivery</h3><p>We stay with you for claims, repeat orders and planning the next season.</p></div></div>
+    </div>
+  </div>
+</section>

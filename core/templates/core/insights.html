@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Insights and Guides | NM Jindal Global{% endblock %}
+{% block description %}Practical guides on agro export documentation, product specifications, shipping terms and quality inspection.{% endblock %}
+
+{% block content %}
+{% include "core/_page_hero.html" with bg="bg-harvest" crumb="Insights" title="Trade guides," accent="in plain language" sub="Practical notes on documents, specifications, shipping terms and quality." %}
+
+<section class="section">
+  <div class="container">
+    <div class="row g-4">
+      {% for a in insights %}
+      <div class="col-md-6 reveal d{{ forloop.counter0 }}">
+        <a class="article-card tilt" href="{% url 'insight_detail' a.slug %}">
+          <div class="ac-img"><img src="{{ a.image_url }}" alt="" loading="lazy" width="1200" height="800"></div>
+          <div class="ac-body"><span class="pc-cat static">{{ a.tag }}</span><h3>{{ a.title }}</h3><p>{{ a.excerpt }}</p><span class="pc-more">{{ a.read_minutes }} min read <i class="bi bi-arrow-right"></i></span></div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% include "core/_cta.html" %}
+{% endblock %}

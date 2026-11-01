@@ -1,0 +1,39 @@
+{% extends "core/email/_base.html" %}
+{% block title %}We have received your enquiry{% endblock %}
+{% block preheader %}Thank you, {{ enquiry.name }}. Your enquiry {{ ref }} has reached our team.{% endblock %}
+{% block body %}
+<tr><td style="padding:34px 32px 8px;">
+  <p style="margin:0 0 6px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#b88a28;font-weight:600;">Enquiry received</p>
+  <h1 style="margin:0 0 14px;font-size:26px;line-height:1.25;color:#0b0b0d;font-weight:600;">Thank you, {{ enquiry.name }}.</h1>
+  <p style="margin:0 0 14px;font-size:15px;line-height:1.7;color:#4a4a50;">We have received your enquiry and a dedicated member of our team will get back to you shortly, usually within one business day.</p>
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 4px;"><tr>
+    <td style="background:#fbf4e1;border:1px solid #ecd9a3;border-radius:8px;padding:8px 14px;font-size:13px;color:#7a5a12;">Your reference: <strong>{{ ref }}</strong></td>
+  </tr></table>
+</td></tr>
+
+<tr><td style="padding:18px 32px 6px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #e7e4da;border-radius:12px;">
+    <tr><td style="padding:16px 20px 4px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8c887d;font-weight:600;">Your message</td></tr>
+    <tr><td style="padding:0 20px 6px;font-size:14px;color:#2a2a2e;"><strong>Interest:</strong> {{ enquiry.get_interest_display }}{% if enquiry.company %} &nbsp;&middot;&nbsp; <strong>Company:</strong> {{ enquiry.company }}{% endif %}</td></tr>
+    <tr><td style="padding:6px 20px 18px;font-size:14px;line-height:1.7;color:#4a4a50;">{{ enquiry.message|linebreaksbr }}</td></tr>
+  </table>
+</td></tr>
+
+<tr><td style="padding:22px 32px 4px;">
+  <p style="margin:0 0 12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8c887d;font-weight:600;">What happens next</p>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="font-size:14px;line-height:1.6;color:#4a4a50;">
+    <tr><td width="34" valign="top" style="padding:0 0 12px;"><div style="width:24px;height:24px;line-height:24px;text-align:center;border-radius:50%;background:#d9a93f;color:#0b0b0d;font-weight:700;font-size:12px;">1</div></td><td style="padding:0 0 12px;"><strong style="color:#0b0b0d;">We review your requirement</strong><br>Product, quantity, destination and timeline.</td></tr>
+    <tr><td width="34" valign="top" style="padding:0 0 12px;"><div style="width:24px;height:24px;line-height:24px;text-align:center;border-radius:50%;background:#d9a93f;color:#0b0b0d;font-weight:700;font-size:12px;">2</div></td><td style="padding:0 0 12px;"><strong style="color:#0b0b0d;">We respond with specifications</strong><br>Grades, packing options and indicative terms, with samples where needed.</td></tr>
+    <tr><td width="34" valign="top" style="padding:0 0 4px;"><div style="width:24px;height:24px;line-height:24px;text-align:center;border-radius:50%;background:#d9a93f;color:#0b0b0d;font-weight:700;font-size:12px;">3</div></td><td style="padding:0 0 4px;"><strong style="color:#0b0b0d;">We plan the shipment with you</strong><br>Sourcing, inspection, documentation and freight.</td></tr>
+  </table>
+</td></tr>
+
+<tr><td style="padding:22px 32px 34px;">
+  <p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#4a4a50;">Need to add something, or in a hurry? Reply to this email or reach us directly:</p>
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+    {% if site.phone %}<td style="padding-right:10px;"><a href="tel:+{{ wa }}" style="display:inline-block;background:#0b0b0d;color:#ecc870;text-decoration:none;font-size:14px;font-weight:600;padding:12px 20px;border-radius:999px;">Call {{ site.phone }}</a></td>{% endif %}
+    {% if wa %}<td><a href="https://wa.me/{{ wa }}" style="display:inline-block;background:#d9a93f;color:#0b0b0d;text-decoration:none;font-size:14px;font-weight:600;padding:12px 20px;border-radius:999px;">WhatsApp us</a></td>{% endif %}
+  </tr></table>
+</td></tr>
+{% endblock %}
+{% block fineprint %}You are receiving this because you submitted an enquiry on {{ base }}. If this was not you, you can ignore this email.{% endblock %}

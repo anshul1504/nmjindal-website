@@ -1,0 +1,10 @@
+<div class="row g-4">
+  {% for title, text in strengths %}
+  <div class="col-md-6 col-lg-4 reveal d{{ forloop.counter0 }}">
+    <div class="strength-card h-100">
+      <h3>{{ title }}</h3>
+      <p class="mb-0">{{ text }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>

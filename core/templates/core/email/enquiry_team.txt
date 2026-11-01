@@ -1,0 +1,15 @@
+New website enquiry {{ ref }}
+
+Name:     {{ enquiry.name }}
+Company:  {{ enquiry.company|default:"-" }}
+Email:    {{ enquiry.email }}
+Phone:    {{ enquiry.phone|default:"-" }}
+Interest: {{ enquiry.get_interest_display }}
+Received: {{ enquiry.created_at|date:"d M Y, H:i" }} (IST)
+
+Message
+-------
+{{ enquiry.message }}
+
+Open in admin: {{ admin_url }}
+(Reply to this email to write to the sender directly.)

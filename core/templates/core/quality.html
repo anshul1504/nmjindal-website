@@ -1,0 +1,63 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Quality and Compliance | NM Jindal Global{% endblock %}
+{% block description %}How NM Jindal Global verifies suppliers, tests and inspects goods and prepares documentation for every shipment.{% endblock %}
+
+{% block content %}
+{% include "core/_page_hero.html" with bg="bg-quality" crumb="Quality & Compliance" title="Quality and compliance," accent="first" sub="Six checkpoints between the supplier's gate and your port." %}
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Our Quality Chain</span>
+      <h2 class="mt-2">Six checkpoints, <span class="gold-text">every shipment</span></h2>
+    </div>
+    <div class="qchain">
+      {% for t, d, i in stages %}
+      <div class="qstep reveal d{{ forloop.counter0 }}"><span class="qno">0{{ forloop.counter }}</span><i class="bi {{ i }}"></i><h3 class="h5">{{ t }}</h3><p class="mb-0">{{ d }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6 reveal"><div class="img-frame"><img src="{% static 'core/img/photos/quality.jpg' %}" alt="Inspector checking goods" loading="lazy" width="1200" height="900"><div class="stamp glass"><i class="bi bi-patch-check"></i> Checked before dispatch</div></div></div>
+      <div class="col-lg-6">
+        <span class="sec-no reveal">Inspection</span>
+        <h2 class="reveal d1 mt-2">Independent checks, <span class="gold-text">clear reports</span></h2>
+        <p class="reveal d2">Representative sampling, grade and moisture, foreign matter, packing and marking, and loading supervision. You receive findings before freight is paid, so you can approve, correct or reject the lot.</p>
+        <ul class="tick-list reveal d3"><li>Specification agreed before production</li><li>Pre-shipment sample and counter-sample</li><li>Container condition and sealing</li><li>Written report with photographs</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Documentation</span>
+      <h2 class="mt-2">Documents we <span class="gold-text">prepare and check</span></h2>
+      <p class="sub">The exact set depends on the product and destination, and is confirmed per shipment.</p>
+    </div>
+    <div class="row g-3">
+      {% for icon, name in docs %}
+      <div class="col-6 col-md-4 col-lg-3 reveal"><div class="doc-card tilt"><i class="bi {{ icon }}"></i><span>{{ name }}</span></div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="sec-no">Before We Begin</span>
+      <h2 class="mt-2">Common <span class="gold-text">questions</span></h2>
+    </div>
+    {% include "core/_faq.html" with uid="quality" %}
+  </div>
+</section>
+
+{% include "core/_cta.html" %}
+{% endblock %}

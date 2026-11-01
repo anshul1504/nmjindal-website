@@ -1,0 +1,33 @@
+{% extends "core/email/_base.html" %}
+{% block title %}New enquiry {{ ref }}{% endblock %}
+{% block preheader %}{{ enquiry.name }} ({{ enquiry.get_interest_display }}) has sent a new enquiry.{% endblock %}
+{% block body %}
+<tr><td style="padding:32px 32px 8px;">
+  <p style="margin:0 0 6px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#b88a28;font-weight:600;">New website enquiry &middot; {{ ref }}</p>
+  <h1 style="margin:0 0 6px;font-size:24px;line-height:1.25;color:#0b0b0d;font-weight:600;">{{ enquiry.name }}{% if enquiry.company %} <span style="color:#8c887d;font-weight:400;">&middot; {{ enquiry.company }}</span>{% endif %}</h1>
+  <p style="margin:0;font-size:13px;color:#8c887d;">Received {{ enquiry.created_at|date:"d M Y, H:i" }} (IST)</p>
+</td></tr>
+
+<tr><td style="padding:18px 32px 6px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #e7e4da;border-radius:12px;font-size:14px;color:#2a2a2e;">
+    <tr><td style="padding:12px 20px;border-bottom:1px solid #efece3;width:130px;color:#8c887d;">Interest</td><td style="padding:12px 20px;border-bottom:1px solid #efece3;"><strong>{{ enquiry.get_interest_display }}</strong></td></tr>
+    <tr><td style="padding:12px 20px;border-bottom:1px solid #efece3;color:#8c887d;">Email</td><td style="padding:12px 20px;border-bottom:1px solid #efece3;"><a href="mailto:{{ enquiry.email }}" style="color:#9a6f10;text-decoration:none;">{{ enquiry.email }}</a></td></tr>
+    <tr><td style="padding:12px 20px;{% if enquiry.company %}border-bottom:1px solid #efece3;{% endif %}color:#8c887d;">Phone</td><td style="padding:12px 20px;{% if enquiry.company %}border-bottom:1px solid #efece3;{% endif %}">{% if enquiry.phone %}<a href="tel:{{ enquiry.phone }}" style="color:#9a6f10;text-decoration:none;">{{ enquiry.phone }}</a>{% else %}<span style="color:#8c887d;">Not given</span>{% endif %}</td></tr>
+    {% if enquiry.company %}<tr><td style="padding:12px 20px;color:#8c887d;">Company</td><td style="padding:12px 20px;">{{ enquiry.company }}</td></tr>{% endif %}
+  </table>
+</td></tr>
+
+<tr><td style="padding:14px 32px 4px;">
+  <p style="margin:0 0 8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8c887d;font-weight:600;">Message</p>
+  <div style="background:#faf8f2;border-left:3px solid #d9a93f;border-radius:6px;padding:16px 18px;font-size:14px;line-height:1.75;color:#2a2a2e;">{{ enquiry.message|linebreaksbr }}</div>
+</td></tr>
+
+<tr><td style="padding:24px 32px 34px;">
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+    <td style="padding-right:10px;"><a href="mailto:{{ enquiry.email }}?subject=Re:%20Your%20enquiry%20{{ ref }}" style="display:inline-block;background:#d9a93f;color:#0b0b0d;text-decoration:none;font-size:14px;font-weight:600;padding:12px 22px;border-radius:999px;">Reply to {{ enquiry.name }}</a></td>
+    <td><a href="{{ admin_url }}" style="display:inline-block;background:#0b0b0d;color:#ecc870;text-decoration:none;font-size:14px;font-weight:600;padding:12px 22px;border-radius:999px;">Open in admin</a></td>
+  </tr></table>
+  <p style="margin:14px 0 0;font-size:12px;color:#8c887d;">Tip: pressing Reply in your mail app also writes to the sender directly.</p>
+</td></tr>
+{% endblock %}
+{% block fineprint %}Sent automatically by the {{ site.company_name }} website enquiry form.{% endblock %}

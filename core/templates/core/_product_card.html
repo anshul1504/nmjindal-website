@@ -1,0 +1,10 @@
+{% load static %}
+<a class="pcard tilt" href="{% url 'product_detail' p.slug %}" data-cat="{{ p.category }}">
+  <div class="pc-img"><img src="{{ p.image_url }}" alt="{{ p.name }}" loading="lazy" width="1200" height="900"><span class="pc-cat">{{ p.category }}</span></div>
+  <div class="pc-body">
+    <h3>{{ p.name }}</h3>
+    <p class="pc-kicker">{{ p.kicker }}</p>
+    <p class="pc-sum">{{ p.summary }}</p>
+    <span class="pc-more">View details <i class="bi bi-arrow-right"></i></span>
+  </div>
+</a>

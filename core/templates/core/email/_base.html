@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>{% block title %}{{ site.company_name }}{% endblock %}</title>
+</head>
+<body style="margin:0;padding:0;background:#efede7;-webkit-text-size-adjust:100%;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">{% block preheader %}{% endblock %}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#efede7;">
+<tr><td align="center" style="padding:28px 12px;">
+  <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;background:#ffffff;border-radius:16px;overflow:hidden;font-family:Poppins,'Segoe UI',Helvetica,Arial,sans-serif;color:#2a2a2e;">
+    <tr><td style="background:#0b0b0d;padding:26px 32px;border-bottom:3px solid #d9a93f;">
+      <img src="{{ base }}static/core/img/logo.png" alt="{{ site.company_name }}" width="170" style="display:block;border:0;height:auto;max-width:170px;">
+    </td></tr>
+    {% block body %}{% endblock %}
+    <tr><td style="background:#0b0b0d;padding:24px 32px;color:#b9b4a6;font-size:12px;line-height:1.7;">
+      <strong style="color:#ecc870;font-size:13px;">{{ site.company_name }}</strong><br>
+      {{ site.tagline }}<br>
+      {% if site.phone %}{{ site.phone }} &nbsp;|&nbsp; {% endif %}{% if site.email %}<a href="mailto:{{ site.email }}" style="color:#ecc870;text-decoration:none;">{{ site.email }}</a>{% endif %}<br>
+      <a href="{{ base }}" style="color:#ecc870;text-decoration:none;">{{ base }}</a>
+    </td></tr>
+  </table>
+  <p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#8c887d;margin:14px 0 0;">{% block fineprint %}{% endblock %}</p>
+</td></tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% load static %}
+<div class="why-panel">
+  <div class="row align-items-center gy-4">
+    <div class="col-lg-6 reveal">
+      <span class="sec-no">Why Choose Us?</span>
+      <h2 class="h1-sm mt-2">A trade partner you can <span class="gold-text">count on</span></h2>
+      <ul class="check-list">
+        {% for item in why_us %}<li><i class="bi bi-check2-circle"></i> {{ item }}</li>{% endfor %}
+      </ul>
+    </div>
+    <div class="col-lg-6 reveal d1">
+      <div class="img-frame">
+        <img src="{% static 'core/img/photos/partnership.jpg' %}" alt="Business partners reviewing figures together" loading="lazy" width="1200" height="900">
+        <div class="stamp glass"><i class="bi bi-shield-check"></i> Honest, transparent dealings</div>
+      </div>
+    </div>
+  </div>
+</div>
